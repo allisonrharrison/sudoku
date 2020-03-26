@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+      crossorigin="anonymous"
+    />
+    <!-- My Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+
+    <!-- FontAwesome -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="node_modules/@fortawesome/fontawesome-free/css/all.css"
+    />
+  </head>
+  <body>
+    <h1>SUDOKU</h1>
+    <div class="container">
+      <div id="game-row" class="row">
+        <div class="col-3 offset-1 pr-0">
+          <label for="difficulty">Difficulty:&nbsp;</label>
+          <select id="difficulty">
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+            <option value="expert">Expert</option>
+          </select>
+        </div>
+        <div class="col-3 pl-0">
+          <label>Check for Mistakes</label>
+          <label class="switch">
+            <input type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div id="gameboard" class="col-6 offset-1">
+          <!-- TOP ROW -->
+          <div class="row">
+            <!-- TOP LEFT BLOCK -->
+            <div class="col block">
+              <div class="row">
+                <div class="col px-0">
+                  <button id="tl-tl" class="number btn-light"></button>
+                </div>
+                <div class="col px-0">
+                  <button id="tl-tm" class="number btn-light"></button>
+                </div>
+                <div class="col px-0">
+                  <button id="tl-tr" class="number btn-light"></button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col px-0">
+                  <button id="tl-ml" class="number btn-light"></button>
+                </div>
+                <div class="col px-0">
+                  <button id="tl-mm" class="number btn-light"></button>
+                </div>
+                <div class="col px-0">
+                  <button id="tl-mr" class="number btn-light"></button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col px-0">
+                  <button id="tl-bl" class="number btn-light"></button>
+                </div>
+                <div class="col px-0">
+                  <button id="tl-bm" class="number btn-light"></button>
+                </div>
+                <div class="col px-0">
+                  <button id="tl-br" class="number btn-light"></button>
+                </div>
+              </div>
+            </div>
+            <!-- TOP MIDDLE BLOCK -->
+            <div class="col block">
+              <div class="row">
+                <div class="col px-0">
+                  <button id="tm-tl" class="number btn-light"></button>
+                </div>
+                <div class="col px-0">
+                  <button id="tm-tm" class="number btn-light"></button>
+                </div>
+                <div class="col px-0">
+                  <button id="tm-tr" class="number btn-light"></button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col px-0">
+                  <button id="tm-ml" class="number btn-light"></button>
+                </div>
+                <div class="col px-0">
+                  <button id="tm-mm" class="number btn-light"></button>
+                </div>
+                <div class="col px-0">
+                  <button id="tm-mr" class="number btn-light"></button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col px-0">
+                  <button id="tm-bl" class="number btn-light"></button>
+                </div>
+                <div class="col px-0">
+                  <button id="tm-bm" class="number btn-light"></button>
+                </div>
+                <div class="col px-0">
+                  <button id="tm-br" class="number btn-light"></button>
+                </div>
+              </div>
+            </div>
+            <!-- TOP RIGHT BLOCK -->
+            <div class="col border-right-0">
+              <div class="row">
+                <div class="col px-0">
+                  <button id="tr-tl" class="number btn-light"></button>
+                </div>
+                <div class="col px-0">
+                  <button id="tr-tm" class="number btn-light"></button>
+                </div>
+                <div class="col px-0">
+                  <button id="tr-tr" class="number btn-light"></button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col px-0">
+                  <button id="tr-ml" class="number btn-light"></button>
+                </div>
+                <div class="col px-0">
+                  <button id="tr-mm" class="number btn-light"></button>
+                </div>
+                <div class="col px-0">
+                  <button id="tr-mr" class="number btn-light"></button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col px-0">
+                  <button id="tr-bl" class="number btn-light"></button>
+                </div>
+                <div class="col px-0">
+                  <button id="tr-bm" class="number btn-light"></button>
+                </div>
+                <div class="col px-0">
+                  <button id="tr-br" class="number btn-light"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- MIDDLE ROW -->
+          <div id="middle-row" class="row">
+            <!-- MIDDLE LEFT BLOCK -->
+            <div class="col block">
+              <div class="row">
+                <div class="col px-0">
+                  <button id="ml-tl" class="number btn-light"></button>
+                </div>
+                <div class="col px-0">
+                  <button id="ml-tm" class="number btn-light"></button>
+                </div>
+                <div class="col px-0">
+                  <button id="ml-tr" class="number btn-light"></button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col px-0">
+                  <button id="ml-ml" class="number btn-light"></button>
+                </div>
+                <div class="col px-0">
+                  <button id="ml-mm" class="number btn-light"></button>
+                </div>
+                <div class="col px-0">
+                  <button id="ml-mr" class="number btn-light"></button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col px-0">
+                  <button id="ml-bl" class="number btn-light"></button>
+                </div>
+                <div class="col px-0">
+                  <button id="ml-bm" class="number btn-light"></button>
+                </div>
+                <div class="col px-0">
+                  <button id="ml-br" class="number btn-light"></button>
+                </div>
+              </div>
+            </div>
+            <!-- MIDDLE MIDDLE BLOCK -->
+            <div class="col block">
+              <div class="row">
+                <div class="col px-0">
+                  <button id="mm-tl" class="number btn-light"></button>
+                </div>
+                <div class="col px-0">
+                  <button id="mm-tm" class="number btn-light"></button>
+                </div>
+                <div class="col px-0">
+                  <button id="mm-tr" class="number btn-light"></button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col px-0">
+                  <button id="mm-ml" class="number btn-light"></button>
+                </div>
+                <div class="col px-0">
+                  <button id="mm-mm" class="number btn-light"></button>
+                </div>
+                <div class="col px-0">
+                  <button id="mm-mr" class="number btn-light"></button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col px-0">
+                  <button id="mm-bl" class="number btn-light"></button>
+                </div>
+                <div class="col px-0">
+                  <button id="mm-bm" class="number btn-light"></button>
+                </div>
+                <div class="col px-0">
+                  <button id="mm-br" class="number btn-light"></button>
+                </div>
+              </div>
+            </div>
+            <!-- MIDDLE RIGHT BLOCK -->
+            <div class="col border-right-0">
+              <div class="row">
+                <div class="col px-0">
+                  <button id="mr-tl" class="number btn-light"></button>
+                </div>
+                <div class="col px-0">
+                  <button id="mr-tm" class="number btn-light"></button>
+                </div>
+                <div class="col px-0">
+                  <button id="mr-tr" class="number btn-light"></button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col px-0">
+                  <button id="mr-ml" class="number btn-light"></button>
+                </div>
+                <div class="col px-0">
+                  <button id="mr-mm" class="number btn-light"></button>
+                </div>
+                <div class="col px-0">
+                  <button id="mr-mr" class="number btn-light"></button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col px-0">
+                  <button id="mr-bl" class="number btn-light"></button>
+                </div>
+                <div class="col px-0">
+                  <button id="mr-bm" class="number btn-light"></button>
+                </div>
+                <div class="col px-0">
+                  <button id="mr-br" class="number btn-light"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- BOTTOM ROW -->
+          <div id="bottom-row" class="row">
+            <!-- BOTTOM LEFT BLOCK -->
+            <div class="col block">
+              <div class="row">
+                <div id="bl-tl" class="col px-0">
+                  <button id="mr-br" class="number btn-light"></button>
+                </div>
+                <div id="bl-tm" class="col px-0">
+                  <button id="mr-br" class="number btn-light"></button>
+                </div>
+                <div id="bl-tr" class="col px-0">
+                  <button id="mr-br" class="number btn-light"></button>
+                </div>
+              </div>
+              <div class="row">
+                <div id="bl-ml" class="col px-0">
+                  <button id="mr-br" class="number btn-light"></button>
+                </div>
+                <div id="bl-mm" class="col px-0">
+                  <button id="mr-br" class="number btn-light"></button>
+                </div>
+                <div id="bl-mr" class="col px-0">
+                  <button id="mr-br" class="number btn-light"></button>
+                </div>
+              </div>
+              <div class="row">
+                <div id="bl-bl" class="col px-0">
+                  <button id="mr-br" class="number btn-light"></button>
+                </div>
+                <div id="bl-bm" class="col px-0">
+                  <button id="mr-br" class="number btn-light"></button>
+                </div>
+                <div id="bl-br" class="col px-0">
+                  <button id="mr-br" class="number btn-light"></button>
+                </div>
+              </div>
+            </div>
+            <!-- BOTTOM MIDDLE BLOCK -->
+            <div class="col block">
+              <div class="row">
+                <div id="bm-tl" class="col px-0">
+                  <button id="mr-br" class="number btn-light"></button>
+                </div>
+                <div id="bm-tm" class="col px-0">
+                  <button id="mr-br" class="number btn-light"></button>
+                </div>
+                <div id="bm-tr" class="col px-0">
+                  <button id="mr-br" class="number btn-light"></button>
+                </div>
+              </div>
+              <div class="row">
+                <div id="bm-ml" class="col px-0">
+                  <button id="mr-br" class="number btn-light"></button>
+                </div>
+                <div id="bm-mm" class="col px-0">
+                  <button id="mr-br" class="number btn-light"></button>
+                </div>
+                <div id="bm-mr" class="col px-0">
+                  <button id="mr-br" class="number btn-light"></button>
+                </div>
+              </div>
+              <div class="row">
+                <div id="bm-bl" class="col px-0">
+                  <button id="mr-br" class="number btn-light"></button>
+                </div>
+                <div id="bm-bm" class="col px-0">
+                  <button id="mr-br" class="number btn-light"></button>
+                </div>
+                <div id="bm-br" class="col px-0">
+                  <button id="mr-br" class="number btn-light"></button>
+                </div>
+              </div>
+            </div>
+            <!-- BOTTOM RIGHT BLOCK -->
+            <div class="col border-right-0">
+              <div class="row">
+                <div id="br-tl" class="col px-0">
+                  <button id="mr-br" class="number btn-light"></button>
+                </div>
+                <div id="br-tm" class="col px-0">
+                  <button id="mr-br" class="number btn-light"></button>
+                </div>
+                <div id="br-tr" class="col px-0">
+                  <button id="mr-br" class="number btn-light"></button>
+                </div>
+              </div>
+              <div class="row">
+                <div id="br-ml" class="col px-0">
+                  <button id="mr-br" class="number btn-light"></button>
+                </div>
+                <div id="br-mm" class="col px-0">
+                  <button id="mr-br" class="number btn-light"></button>
+                </div>
+                <div id="br-mr" class="col px-0">
+                  <button id="mr-br" class="number btn-light"></button>
+                </div>
+              </div>
+              <div class="row">
+                <div id="br-bl" class="col px-0">
+                  <button id="mr-br" class="number btn-light"></button>
+                </div>
+                <div id="br-bm" class="col px-0">
+                  <button id="mr-br" class="number btn-light"></button>
+                </div>
+                <div id="br-br" class="col px-0">
+                  <button id="mr-br" class="number btn-light"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- SIDE PANEL -->
+        <div class="col-3 offset-1">
+          <button class="btn btn-secondary btn-block mb-2">New Game</button>
+          <div id="side-panel-numbers">
+            <!-- TOP ROW NUMBERS -->
+            <div class="row">
+              <div class="col pr-0">
+                <button class="number btn-light"><h2 id="1">1</h2></button>
+              </div>
+              <div class="col px-0">
+                <button class="number btn-light"><h2 id="2">2</h2></button>
+              </div>
+              <div class="col pl-0">
+                <button class="number btn-light"><h2 id="3">3</h2></button>
+              </div>
+            </div>
+            <!-- MIDDLE ROW NUMBERS -->
+            <div class="row">
+              <div class="col pr-0">
+                <button class="number btn-light"><h2 id="4">4</h2></button>
+              </div>
+              <div class="col px-0">
+                <button class="number btn-light"><h2 id="5">5</h2></button>
+              </div>
+              <div class="col pl-0">
+                <button class="number btn-light"><h2 id="6">6</h2></button>
+              </div>
+            </div>
+            <!-- BOTTOM ROW NUMBERS -->
+            <div class="row">
+              <div class="col pr-0">
+                <button class="number btn-light"><h2 id="7">7</h2></button>
+              </div>
+              <div class="col px-0">
+                <button class="number btn-light"><h2 id="8">8</h2></button>
+              </div>
+              <div class="col pl-0">
+                <button class="number btn-light"><h2 id="9">9</h2></button>
+              </div>
+            </div>
+          </div>
+          <!-- SIDE PANEL OPTIONS -->
+          <div id="side-panel-options">
+            <!-- TOP ROW OPTIONS -->
+            <div id="options-top">
+              <div class="col-6 border-right p-0">
+                <button class="options btn-light">
+                  <i class="fas fa-pencil-alt fa-lg"></i>
+                  <span id="notes-switch" class="badge badge-secondary"
+                    >OFF</span
+                  ><br />
+                  Notes
+                </button>
+              </div>
+              <div class="col-6 p-0">
+                <button class="options btn-light">
+                  <i class="far fa-lightbulb fa-lg"></i>
+                  <br />
+                  Hint
+                </button>
+              </div>
+            </div>
+            <!-- BOTTOM ROW OPTIONS -->
+            <div id="options-bottom">
+              <div class="col-6 border-right p-0">
+                <button class="options btn-light">
+                  <i class="fas fa-undo fa-lg"></i>
+                  <br />
+                  Undo
+                </button>
+              </div>
+              <div class="col-6 p-0">
+                <button class="options btn-light">
+                  <i class="fas fa-eraser fa-lg"></i>
+                  <br />
+                  Erase
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- END BODY CONTENT -->
+        </div>
+      </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <!-- JQUERY -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <!-- POPPER.JS -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+      integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+      crossorigin="anonymous"
+    ></script>
+    <!-- BOOTSTRAP JS-->
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+      integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

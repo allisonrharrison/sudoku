@@ -1,0 +1,146 @@
+h1 {
+  text-align: center;
+  margin: 10px 0px 50px 0px;
+}
+
+h2 {
+  text-align: center;
+}
+
+.row {
+  border-bottom: 1px solid black;
+  height: 33.33%;
+}
+
+.col {
+  border-right: 1px solid black;
+  width: 33.33%;
+}
+
+#game-row {
+  border-bottom: none;
+}
+
+#gameboard {
+  border: 5px solid black;
+  width: 100%;
+  height: 450px;
+  overflow: hidden;
+}
+
+#side-panel-numbers {
+  border: 1px solid black;
+  height: 200px;
+  overflow: hidden;
+}
+
+#side-panel-options {
+  border: 1px solid black;
+  height: 200px;
+  overflow: hidden;
+}
+
+#options-top {
+  height: 50%;
+  border-bottom: 1px solid black;
+  display: flex;
+
+}
+
+#options-bottom {
+  height: 50%;
+  border-bottom: none;
+  display: flex;
+}
+
+.options {
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+}
+
+.number {
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+}
+
+#difficulty {
+  cursor: pointer;
+}
+
+#middle-row {
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+}
+
+#bottom-row {
+  border-bottom: none;
+}
+
+.block {
+  border-right: 2px solid black;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 25px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 17px;
+  width: 18px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #868e96;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #868e96;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(14px);
+  -ms-transform: translateX(14px);
+  transform: translateX(14px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 25px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
